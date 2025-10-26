@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundación para el Desarrollo Comunitario</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header y Navegación */
+        header {
+            background: linear-gradient(135deg, #2c5f2d 0%, #4a8f3c 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 95, 45, 0.7), rgba(74, 143, 60, 0.7)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%234a8f3c" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem 6rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* Contenedor general */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Sección Misión y Visión */
+        .mision-vision {
+            background: #f8f9fa;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: #2c5f2d;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .card p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Títulos de sección */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c5f2d;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #2c5f2d, #4a8f3c);
+        }
+
+        /* Proyectos */
+        .proyectos {
+            background: white;
+        }
+
+        .proyecto-item {
+            background: #f8f9fa;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #4a8f3c;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .proyecto-item:hover {
+            background: #e9ecef;
+        }
+
+        .proyecto-item h3 {
+            color: #2c5f2d;
+            margin-bottom: 0.5rem;
+        }
+
+        .proyecto-item p {
+            color: #666;
+        }
+
+        /* Galería */
+        .galeria {
+            background: #f8f9fa;
+        }
+
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .galeria-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .galeria-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .galeria-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Donaciones */
+        .donaciones {
+            background: white;
+        }
+
+        .donacion-opciones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .donacion-card {
+            background: linear-gradient(135deg, #2c5f2d 0%, #4a8f3c 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .donacion-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .donacion-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .donacion-card p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: white;
+            color: #2c5f2d;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #f8f9fa;
+            transform: scale(1.05);
+        }
+
+        /* Contacto */
+        .contacto {
+            background: #f8f9fa;
+        }
+
+        .contacto-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contacto-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .contacto-item {
+            display: flex;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        .contacto-item-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #4a8f3c;
+        }
+
+        .contacto-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c5f2d;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4a8f3c;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #2c5f2d 0%, #4a8f3c 100%);
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c5f2d;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Fundación</div>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#mision-vision">Misión y Visión</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#donar">Donar</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <h1>Transformando Comunidades, Construyendo Futuro</h1>
+        <p>Trabajamos por el desarrollo integral de comunidades vulnerables con transparencia, compromiso y presencia territorial</p>
+    </section>
+
+    <!-- Misión y Visión -->
+    <section id="mision-vision" class="mision-vision">
+        <div class="container">
+            <h2 class="section-title">Nuestra Esencia</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon">🌱</div>
+                    <h3>Misión</h3>
+                    <p>Promover el desarrollo integral de comunidades vulnerables mediante la gestión de proyectos sociales, productivos y ambientales que canalizan recursos, fortalecen capacidades locales y generan bienestar colectivo.</p>
+                    <p style="margin-top: 1rem;">Actuamos con transparencia, legalidad y presencia territorial, articulando esfuerzos de entidades públicas, privadas y comunitarias para transformar realidades desde la base.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌄</div>
+                    <h3>Visión</h3>
+                    <p>Ser una fundación reconocida a nivel nacional por su capacidad de articular comunidades, entidades públicas y privadas en procesos legítimos, sostenibles y empáticos de desarrollo territorial.</p>
+                    <p style="margin-top: 1rem;">Aspiramos a consolidar entornos diversos y estratégicos, donde la confianza institucional, el compromiso ciudadano y la innovación social generen bienestar duradero, cohesión comunitaria y transformación estructural.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyectos y Programas -->
+    <section id="proyectos" class="proyectos">
+        <div class="container">
+            <h2 class="section-title">Proyectos y Programas</h2>
+
+            <div class="proyecto-item">
+                <h3>Desarrollo Productivo Comunitario</h3>
+                <p>Fortalecemos las capacidades productivas de las comunidades mediante capacitación, acceso a recursos y acompañamiento técnico para generar alternativas económicas sostenibles.</p>
+            </div>
+
+            <div class="proyecto-item">
+                <h3>Conservación Ambiental y Territorio</h3>
+                <p>Implementamos proyectos de conservación ambiental que integran a las comunidades en la protección de sus recursos naturales, promoviendo prácticas sostenibles y educación ambiental.</p>
+            </div>
+
+            <div class="proyecto-item">
+                <h3>Fortalecimiento Organizacional</h3>
+                <p>Acompañamos a organizaciones comunitarias en su consolidación institucional, desarrollo de liderazgos y gestión transparente de recursos para el beneficio colectivo.</p>
+            </div>
+
+            <div class="proyecto-item">
+                <h3>Articulación Público-Privada</h3>
+                <p>Facilitamos espacios de diálogo y cooperación entre comunidades, entidades públicas y sector privado para canalizar recursos y generar alianzas estratégicas de impacto territorial.</p>
+            </div>
+
+            <div class="proyecto-item">
+                <h3>Innovación Social y Tecnología</h3>
+                <p>Promovemos soluciones innovadoras y acceso a tecnologías apropiadas que mejoren la calidad de vida y generen oportunidades de desarrollo en las comunidades.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería -->
+    <section id="galeria" class="galeria">
+        <div class="container">
+            <h2 class="section-title">Galería de Impacto</h2>
+            <div class="galeria-grid">
+                <div class="galeria-item">
+                    <!-- Aquí puedes agregar tus imágenes reales -->
+                    <span>Talleres comunitarios</span>
+                </div>
+                <div class="galeria-item">
+                    <span>Proyectos ambientales</span>
+                </div>
+                <div class="galeria-item">
+                    <span>Agricultura sostenible</span>
+                </div>
+                <div class="galeria-item">
+                    <span>Liderazgo comunitario</span>
+                </div>
+                <div class="galeria-item">
+                    <span>Eventos de integración</span>
+                </div>
+                <div class="galeria-item">
+                    <span>Territorio y comunidad</span>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; color: #666;">
+                <em>Para agregar imágenes reales, reemplaza el contenido de cada div.galeria-item con: &lt;img src="ruta-de-tu-imagen.jpg" alt="Descripción"&gt;</em>
+            </p>
+        </div>
+    </section>
+
+    <!-- Donaciones -->
+    <section id="donar" class="donaciones">
+        <div class="container">
+            <h2 class="section-title">Apoya Nuestra Causa</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: #666; font-size: 1.1rem;">
+                Tu apoyo es fundamental para continuar transformando comunidades. Cada contribución genera impacto real en las vidas de familias y territorios vulnerables.
+            </p>
+
+            <div class="donacion-opciones">
+                <div class="donacion-card">
+                    <h3>Donación Única</h3>
+                    <p>Realiza una contribución de cualquier monto y ayúdanos a financiar nuestros proyectos actuales.</p>
+                    <a href="#contacto" class="btn">Donar Ahora</a>
+                </div>
+
+                <div class="donacion-card">
+                    <h3>Donación Mensual</h3>
+                    <p>Conviértete en aliado permanente con aportes mensuales que sostienen nuestro trabajo a largo plazo.</p>
+                    <a href="#contacto" class="btn">Ser Aliado</a>
+                </div>
+
+                <div class="donacion-card">
+                    <h3>Voluntariado</h3>
+                    <p>Dona tu tiempo y talento. Únete a nuestros programas de voluntariado y trabaja directamente con las comunidades.</p>
+                    <a href="#contacto" class="btn">Inscribirme</a>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 10px; text-align: center;">
+                <h3 style="color: #2c5f2d; margin-bottom: 1rem;">Información Bancaria</h3>
+                <p><strong>Banco:</strong> [Nombre del Banco]</p>
+                <p><strong>Cuenta:</strong> [Número de Cuenta]</p>
+                <p><strong>Titular:</strong> Fundación para el Desarrollo Comunitario</p>
+                <p><strong>NIT/ID:</strong> [Número de identificación]</p>
+                <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                    <em>Por favor, envía el comprobante de tu donación a nuestro correo de contacto</em>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contacto">
+        <div class="container">
+            <h2 class="section-title">Contáctanos</h2>
+            <div class="contacto-container">
+                <div class="contacto-info">
+                    <h3 style="color: #2c5f2d; margin-bottom: 2rem;">Información de Contacto</h3>
+
+                    <div class="contacto-item">
+                        <span class="contacto-item-icon">📍</span>
+                        <div>
+                            <strong>Dirección</strong>
+                            <p>[Tu dirección completa]</p>
+                        </div>
+                    </div>
+
+                    <div class="contacto-item">
+                        <span class="contacto-item-icon">📞</span>
+                        <div>
+                            <strong>Teléfono</strong>
+                            <p>[Tu número de teléfono]</p>
+                        </div>
+                    </div>
+
+                    <div class="contacto-item">
+                        <span class="contacto-item-icon">📧</span>
+                        <div>
+                            <strong>Email</strong>
+                            <p>[Tu correo electrónico]</p>
+                        </div>
+                    </div>
+
+                    <div class="contacto-item">
+                        <span class="contacto-item-icon">🕒</span>
+                        <div>
+                            <strong>Horario de Atención</strong>
+                            <p>Lunes a Viernes: 8:00 AM - 5:00 PM</p>
+                            <p>Sábados: 9:00 AM - 1:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contacto-form">
+                    <h3 style="color: #2c5f2d; margin-bottom: 1.5rem;">Envíanos un Mensaje</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Fundación para el Desarrollo Comunitario</strong></p>
+        <p>Transformando comunidades, construyendo futuro</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">&copy; 2025 Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        // Smooth scroll para la navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Prevenir envío del formulario (en producción, conectar con backend)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
