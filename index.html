@@ -40,6 +40,15 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
         }
 
         nav ul {
@@ -493,6 +502,14 @@
                 padding: 1rem;
             }
 
+            .logo img {
+                height: 40px;
+            }
+
+            .logo span {
+                font-size: 1rem;
+            }
+
             .hero h1 {
                 font-size: 2rem;
             }
@@ -523,7 +540,10 @@
     <!-- Header -->
     <header>
         <nav>
-            <div class="logo">Fundación Santo Angel</div>
+            <div class="logo">
+                <img src="src/images/logo/Log.png" alt="Logo Fundación Santo Angel">
+                <span>Fundación Santo Angel</span>
+            </div>
             <div class="menu-toggle" id="menuToggle">
                 <span></span>
                 <span></span>
