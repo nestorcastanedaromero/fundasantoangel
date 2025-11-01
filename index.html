@@ -3,7 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fundación Santo Angel</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Fundación Santo Angel | Transformando Comunidades en Colombia</title>
+    <meta name="description" content="Fundación Santo Angel promueve el desarrollo integral de comunidades vulnerables en Colombia mediante proyectos sociales, productivos y ambientales. Trabajamos con transparencia y compromiso territorial.">
+    <meta name="keywords" content="fundación, desarrollo comunitario, proyectos sociales, Colombia, ONG, sostenibilidad, desarrollo territorial, comunidades vulnerables, responsabilidad social">
+    <meta name="author" content="Fundación Santo Angel">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Spanish">
+    <link rel="canonical" href="https://nestorcastanedaromero.github.io/fundasantoangel/">
+    
+    <!-- Open Graph Meta Tags (Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Fundación Santo Angel">
+    <meta property="og:title" content="Fundación Santo Angel | Transformando Comunidades">
+    <meta property="og:description" content="Promovemos el desarrollo integral de comunidades vulnerables mediante proyectos sociales, productivos y ambientales con transparencia y presencia territorial.">
+    <meta property="og:image" content="https://nestorcastanedaromero.github.io/fundasantoangel/src/images/logo/Logo%20y%20slogan.png">
+    <meta property="og:url" content="https://nestorcastanedaromero.github.io/fundasantoangel/">
+    <meta property="og:locale" content="es_CO">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fundación Santo Angel | Transformando Comunidades">
+    <meta name="twitter:description" content="Promovemos el desarrollo integral de comunidades vulnerables mediante proyectos sociales, productivos y ambientales con transparencia y presencia territorial.">
+    <meta name="twitter:image" content="https://nestorcastanedaromero.github.io/fundasantoangel/src/images/logo/Logo%20y%20slogan.png">
+    
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#2c5f2d">
+    <meta name="msapplication-TileColor" content="#2c5f2d">
+    <meta name="geo.region" content="CO">
+    <meta name="geo.placename" content="Colombia">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="src/images/logo/favicon_io/favicon.ico">
@@ -13,6 +42,41 @@
     <link rel="icon" type="image/png" sizes="192x192" href="src/images/logo/favicon_io/android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="src/images/logo/favicon_io/android-chrome-512x512.png">
     <link rel="manifest" href="src/images/logo/favicon_io/site.webmanifest">
+    
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "NGO",
+        "name": "Fundación Santo Angel",
+        "alternateName": "Fundación para el Desarrollo Comunitario Santo Angel",
+        "url": "https://nestorcastanedaromero.github.io/fundasantoangel/",
+        "logo": "https://nestorcastanedaromero.github.io/fundasantoangel/src/images/logo/Logo%20y%20slogan.png",
+        "description": "Promovemos el desarrollo integral de comunidades vulnerables mediante la gestión de proyectos sociales, productivos y ambientales que canalizan recursos, fortalecen capacidades locales y generan bienestar colectivo.",
+        "foundingLocation": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "CO"
+            }
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Colombia"
+        },
+        "sameAs": [
+            "https://github.com/nestorcastanedaromero/fundasantoangel"
+        ],
+        "knowsAbout": [
+            "Desarrollo Comunitario",
+            "Proyectos Sociales",
+            "Sostenibilidad Ambiental",
+            "Desarrollo Territorial",
+            "Fortalecimiento Organizacional"
+        ],
+        "slogan": "Transformando comunidades, construyendo futuro"
+    }
+    </script>
     
     <style>
         * {
@@ -85,6 +149,9 @@
             flex-direction: column;
             cursor: pointer;
             gap: 4px;
+            background: none;
+            border: none;
+            padding: 0;
         }
 
         .menu-toggle span {
@@ -549,17 +616,17 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <nav>
+    <header role="banner">
+        <nav role="navigation" aria-label="Navegación principal">
             <div class="logo">
-                <img src="src/images/logo/Log.png" alt="Logo Fundación Santo Angel">
+                <img src="src/images/logo/Log.png" alt="Logo Fundación Santo Angel - Transformando comunidades">
                 <span>Fundación Santo Angel</span>
             </div>
-            <div class="menu-toggle" id="menuToggle">
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú de navegación" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
             <ul id="navMenu">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#mision-vision">Misión y Visión</a></li>
@@ -572,7 +639,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="inicio" class="hero">
+    <section id="inicio" class="hero" role="main">
         <h1>Transformando Comunidades, Construyendo Futuro</h1>
         <p>Trabajamos por el desarrollo integral de comunidades vulnerables con transparencia, compromiso y presencia territorial</p>
     </section>
@@ -801,8 +868,9 @@
         const navMenu = document.getElementById('navMenu');
 
         menuToggle.addEventListener('click', function() {
-            menuToggle.classList.toggle('active');
+            const isActive = menuToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', isActive);
         });
 
         // Cerrar menú al hacer clic en un enlace
@@ -811,6 +879,7 @@
             link.addEventListener('click', function() {
                 menuToggle.classList.remove('active');
                 navMenu.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
             });
         });
 
@@ -819,6 +888,7 @@
             if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
                 menuToggle.classList.remove('active');
                 navMenu.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
             }
         });
 
