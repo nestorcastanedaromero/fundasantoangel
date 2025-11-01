@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fundación para el Desarrollo Comunitario</title>
+    <title>Fundación Santo Angel</title>
     <style>
         * {
             margin: 0;
@@ -57,6 +57,33 @@
 
         nav a:hover {
             opacity: 0.8;
+        }
+
+        /* Menú Hamburguesa */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
         }
 
         /* Hero Section */
@@ -373,9 +400,44 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            nav {
+                position: relative;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
             nav ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #2c5f2d 0%, #4a8f3c 100%);
                 flex-direction: column;
-                gap: 1rem;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            }
+
+            nav ul.active {
+                max-height: 400px;
+            }
+
+            nav ul li {
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 1rem;
             }
 
             .hero h1 {
@@ -389,6 +451,18 @@
             .section-title {
                 font-size: 2rem;
             }
+
+            .container {
+                padding: 3rem 1rem;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .galeria-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
         }
     </style>
 </head>
@@ -396,8 +470,13 @@
     <!-- Header -->
     <header>
         <nav>
-            <div class="logo">Fundación</div>
-            <ul>
+            <div class="logo">Fundación Santo Angel</div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="navMenu">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#mision-vision">Misión y Visión</a></li>
                 <li><a href="#proyectos">Proyectos</a></li>
@@ -523,7 +602,7 @@
                 <h3 style="color: #2c5f2d; margin-bottom: 1rem;">Información Bancaria</h3>
                 <p><strong>Banco:</strong> [Nombre del Banco]</p>
                 <p><strong>Cuenta:</strong> [Número de Cuenta]</p>
-                <p><strong>Titular:</strong> Fundación para el Desarrollo Comunitario</p>
+                <p><strong>Titular:</strong> Fundación Santo Angel</p>
                 <p><strong>NIT/ID:</strong> [Número de identificación]</p>
                 <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
                     <em>Por favor, envía el comprobante de tu donación a nuestro correo de contacto</em>
@@ -606,7 +685,7 @@
 
     <!-- Footer -->
     <footer>
-        <p><strong>Fundación para el Desarrollo Comunitario</strong></p>
+        <p><strong>Fundación Santo Angel</strong></p>
         <p>Transformando comunidades, construyendo futuro</p>
         <p style="margin-top: 1rem; opacity: 0.8;">&copy; 2025 Todos los derechos reservados</p>
     </footer>
@@ -631,6 +710,32 @@
             e.preventDefault();
             alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
             this.reset();
+        });
+
+        // Menú móvil responsive
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        const navLinks = document.querySelectorAll('#navMenu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', function(e) {
+            if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
         });
     </script>
 </body>
