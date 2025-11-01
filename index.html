@@ -398,6 +398,59 @@
             margin-bottom: 0.5rem;
         }
 
+        /* Animaciones de aparición */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Delay para animaciones escalonadas */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
+        .delay-6 { transition-delay: 0.6s; }
+
         /* Responsive */
         @media (max-width: 768px) {
             nav {
@@ -496,15 +549,15 @@
     <!-- Misión y Visión -->
     <section id="mision-vision" class="mision-vision">
         <div class="container">
-            <h2 class="section-title">Nuestra Esencia</h2>
+            <h2 class="section-title fade-in">Nuestra Esencia</h2>
             <div class="cards-container">
-                <div class="card">
+                <div class="card fade-in-left delay-1">
                     <div class="card-icon">🌱</div>
                     <h3>Misión</h3>
                     <p>Promover el desarrollo integral de comunidades vulnerables mediante la gestión de proyectos sociales, productivos y ambientales que canalizan recursos, fortalecen capacidades locales y generan bienestar colectivo.</p>
                     <p style="margin-top: 1rem;">Actuamos con transparencia, legalidad y presencia territorial, articulando esfuerzos de entidades públicas, privadas y comunitarias para transformar realidades desde la base.</p>
                 </div>
-                <div class="card">
+                <div class="card fade-in-right delay-2">
                     <div class="card-icon">🌄</div>
                     <h3>Visión</h3>
                     <p>Ser una fundación reconocida a nivel nacional por su capacidad de articular comunidades, entidades públicas y privadas en procesos legítimos, sostenibles y empáticos de desarrollo territorial.</p>
@@ -517,29 +570,29 @@
     <!-- Proyectos y Programas -->
     <section id="proyectos" class="proyectos">
         <div class="container">
-            <h2 class="section-title">Proyectos y Programas</h2>
+            <h2 class="section-title fade-in">Proyectos y Programas</h2>
 
-            <div class="proyecto-item">
+            <div class="proyecto-item fade-in delay-1">
                 <h3>Desarrollo Productivo Comunitario</h3>
                 <p>Fortalecemos las capacidades productivas de las comunidades mediante capacitación, acceso a recursos y acompañamiento técnico para generar alternativas económicas sostenibles.</p>
             </div>
 
-            <div class="proyecto-item">
+            <div class="proyecto-item fade-in delay-2">
                 <h3>Conservación Ambiental y Territorio</h3>
                 <p>Implementamos proyectos de conservación ambiental que integran a las comunidades en la protección de sus recursos naturales, promoviendo prácticas sostenibles y educación ambiental.</p>
             </div>
 
-            <div class="proyecto-item">
+            <div class="proyecto-item fade-in delay-3">
                 <h3>Fortalecimiento Organizacional</h3>
                 <p>Acompañamos a organizaciones comunitarias en su consolidación institucional, desarrollo de liderazgos y gestión transparente de recursos para el beneficio colectivo.</p>
             </div>
 
-            <div class="proyecto-item">
+            <div class="proyecto-item fade-in delay-4">
                 <h3>Articulación Público-Privada</h3>
                 <p>Facilitamos espacios de diálogo y cooperación entre comunidades, entidades públicas y sector privado para canalizar recursos y generar alianzas estratégicas de impacto territorial.</p>
             </div>
 
-            <div class="proyecto-item">
+            <div class="proyecto-item fade-in delay-5">
                 <h3>Innovación Social y Tecnología</h3>
                 <p>Promovemos soluciones innovadoras y acceso a tecnologías apropiadas que mejoren la calidad de vida y generen oportunidades de desarrollo en las comunidades.</p>
             </div>
@@ -549,21 +602,21 @@
     <!-- Galería -->
     <section id="galeria" class="galeria">
         <div class="container">
-            <h2 class="section-title">Galería de Impacto</h2>
+            <h2 class="section-title fade-in">Galería de Impacto</h2>
             <div class="galeria-grid">
-                <div class="galeria-item">
+                <div class="galeria-item scale-in delay-1">
                     <img src="src/images/galeria/imagen1.png" alt="Talleres comunitarios">
                 </div>
-                <div class="galeria-item">
+                <div class="galeria-item scale-in delay-2">
                     <img src="src/images/galeria/imagen2.png" alt="Proyectos ambientales">
                 </div>
-                <div class="galeria-item">
+                <div class="galeria-item scale-in delay-3">
                     <img src="src/images/galeria/imagen3.png" alt="Agricultura sostenible">
                 </div>
-                <div class="galeria-item">
+                <div class="galeria-item scale-in delay-4">
                     <img src="src/images/galeria/imagen4.png" alt="Liderazgo comunitario">
                 </div>
-                <div class="galeria-item">
+                <div class="galeria-item scale-in delay-5">
                     <img src="src/images/galeria/imagen5.png" alt="Eventos de integración">
                 </div>
             </div>
@@ -573,25 +626,25 @@
     <!-- Donaciones -->
     <section id="donar" class="donaciones">
         <div class="container">
-            <h2 class="section-title">Apoya Nuestra Causa</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: #666; font-size: 1.1rem;">
+            <h2 class="section-title fade-in">Apoya Nuestra Causa</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: #666; font-size: 1.1rem;" class="fade-in delay-1">
                 Tu apoyo es fundamental para continuar transformando comunidades. Cada contribución genera impacto real en las vidas de familias y territorios vulnerables.
             </p>
 
             <div class="donacion-opciones">
-                <div class="donacion-card">
+                <div class="donacion-card fade-in-left delay-2">
                     <h3>Donación Única</h3>
                     <p>Realiza una contribución de cualquier monto y ayúdanos a financiar nuestros proyectos actuales.</p>
                     <a href="#contacto" class="btn">Donar Ahora</a>
                 </div>
 
-                <div class="donacion-card">
+                <div class="donacion-card fade-in delay-3">
                     <h3>Donación Mensual</h3>
                     <p>Conviértete en aliado permanente con aportes mensuales que sostienen nuestro trabajo a largo plazo.</p>
                     <a href="#contacto" class="btn">Ser Aliado</a>
                 </div>
 
-                <div class="donacion-card">
+                <div class="donacion-card fade-in-right delay-4">
                     <h3>Voluntariado</h3>
                     <p>Dona tu tiempo y talento. Únete a nuestros programas de voluntariado y trabaja directamente con las comunidades.</p>
                     <a href="#contacto" class="btn">Inscribirme</a>
@@ -736,6 +789,26 @@
                 menuToggle.classList.remove('active');
                 navMenu.classList.remove('active');
             }
+        });
+
+        // Animaciones al hacer scroll (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observar todos los elementos con clases de animación
+        const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in');
+        animatedElements.forEach(element => {
+            observer.observe(element);
         });
     </script>
 </body>
